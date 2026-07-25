@@ -1,0 +1,383 @@
+@import url(
+  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, #263953 0%, #101b2a 55%, #080d15 100%);
+  color: #f8f1e5;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+.oculto {
+  display: none;
+}
+
+/* PORTADA */
+
+.portada {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.portada::before,
+.portada::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgba(212, 178, 110, 0.18);
+  border-radius: 50%;
+}
+
+.portada::before {
+  top: -170px;
+  left: -120px;
+}
+
+.portada::after {
+  right: -140px;
+  bottom: -180px;
+}
+
+.portada-contenido {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  animation: aparecer 1.5s ease;
+}
+
+.detalle {
+  margin-bottom: 18px;
+  color: #d9bd85;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.portada h1 {
+  margin-bottom: 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(56px, 10vw, 100px);
+  font-weight: 500;
+  line-height: 0.9;
+}
+
+.nombre {
+  margin-bottom: 38px;
+  color: #ddd3c1;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-style: italic;
+}
+
+#botonAbrir {
+  padding: 16px 32px;
+  border: 1px solid #d4b26e;
+  border-radius: 40px;
+  background: transparent;
+  color: #f8f1e5;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#botonAbrir:hover {
+  background: #d4b26e;
+  color: #101b2a;
+  box-shadow: 0 0 30px rgba(212, 178, 110, 0.35);
+  transform: translateY(-3px);
+}
+
+/* INVITACIÓN */
+
+.invitacion {
+  animation: aparecer 1.2s ease;
+}
+
+.encabezado {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 25px;
+  text-align: center;
+}
+
+.subtitulo {
+  margin-bottom: 12px;
+  color: #d4b26e;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.encabezado h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(55px, 10vw, 95px);
+  font-weight: 500;
+}
+
+.corazon {
+  margin-top: 20px;
+  color: #d4b26e;
+  font-size: 32px;
+  animation: latido 1.5s infinite;
+}
+
+/* CARRUSEL */
+
+.seccion-fotos {
+  width: 100%;
+  padding: 20px 20px 80px;
+}
+
+.carrusel {
+  position: relative;
+  width: min(850px, 100%);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-fotos {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, 0.08);
+  border-radius: 25px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.foto {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #0c1420;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.6s ease;
+}
+
+.foto.activa {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.boton-carrusel {
+  position: absolute;
+  z-index: 4;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(8, 13, 21, 0.7);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.boton-carrusel:hover {
+  background: #d4b26e;
+  color: #101b2a;
+}
+
+.anterior {
+  left: 20px;
+}
+
+.siguiente {
+  right: 20px;
+}
+
+.indicadores {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.punto {
+  width: 9px;
+  height: 9px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.punto.activo {
+  width: 28px;
+  border-radius: 10px;
+  background: #d4b26e;
+}
+
+/* MENSAJE */
+
+.mensaje {
+  width: min(760px, 90%);
+  margin: auto;
+  padding: 80px 60px;
+  border-top: 1px solid rgba(212, 178, 110, 0.25);
+  border-bottom: 1px solid rgba(212, 178, 110, 0.25);
+  text-align: center;
+}
+
+.mensaje p {
+  margin-bottom: 25px;
+  color: #ddd3c1;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  line-height: 1.7;
+}
+
+.mensaje .frase-principal {
+  color: #ffffff;
+  font-size: 36px;
+  line-height: 1.25;
+}
+
+.mensaje .firma {
+  margin-top: 40px;
+  margin-bottom: 0;
+  color: #d4b26e;
+  font-size: 30px;
+  font-style: italic;
+}
+
+/* RESERVA */
+
+.reserva {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.invitacion-texto {
+  width: min(600px, 90%);
+  margin: 0 auto 40px;
+  color: #ddd3c1;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+}
+
+.tarjeta-reserva {
+  width: min(520px, 100%);
+  margin: auto;
+  padding: 55px 30px;
+  border: 1px solid rgba(212, 178, 110, 0.5);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+.etiqueta {
+  color: #c9bea9;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.tarjeta-reserva h3 {
+  margin: 20px 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+  font-weight: 500;
+}
+
+.separador {
+  width: 60px;
+  height: 1px;
+  margin: 25px auto;
+  background: #d4b26e;
+}
+
+.hora {
+  color: #d4b26e;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+}
+
+.nota {
+  margin-top: 22px;
+  color: #c9bea9;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+footer {
+  padding: 35px 20px 60px;
+  color: #b9ad98;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* ANIMACIONES */
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes latido {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+  .contenedor-fotos {
+    height: 520px;
+  }
+}
+
+@media (max-width: 450px) {
+  .contenedor-fotos {
+    height: 460px;
+  }
+}
